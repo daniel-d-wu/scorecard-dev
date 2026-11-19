@@ -1,4 +1,4 @@
-# Application Scorecard Development — LendingClub Public Data
+# End-to-End Scorecard Development — LendingClub Public Data
 
 ## Disclaimer
 
