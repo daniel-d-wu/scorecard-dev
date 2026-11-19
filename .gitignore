@@ -1,0 +1,8 @@
+# Raw data (download from Kaggle; too large for GitHub)
+*.csv
+*.zip
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.venv/
