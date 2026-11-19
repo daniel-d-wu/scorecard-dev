@@ -2,7 +2,7 @@
 
 ## Disclaimer
 
-This repository is for demonstrative purposes only. It uses public LendingClub loan data that is widely used in Kaggle projects ([Kaggle: Lending Club Loan Data](https://www.kaggle.com/datasets/wordsforthewise/lending-club)). It does not use, reproduce or represent any lender's proprietary models, data or documentation.
+This repository is for demonstrative purposes only. It uses public LendingClub loan data that is widely used in Kaggle projects ([Kaggle: Lending Club Loan Data](https://www.kaggle.com/datasets/wordsforthewise/lending-club)). It does not use, reproduce or represent any proprietary models, data or documentation. The approach taken is a generic scorecard method. Internal models typically involve more intensive treatment over the pre-model fitting stages of scorecard development, and sometimes involves vendors to assist in steps laid out in the roadmap (e.g. bureaus to identify surrogates in reject inferencing, or specialty shops for algorithmic binning). Instead, I use available public tools.  
 
 ## Overview
 
