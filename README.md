@@ -21,7 +21,7 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 | 7 | | Reject inference | Known good/bad model, fuzzy augmentation, reject risk adjustment and booked/inferred mix sensitivity; diagnostic only, final model on accepted loans | Done |
 | 8 | | Empirical segmentation | Tree-proposed splits tested as segment-level vs single models; best lift ≈ +0.2 Gini, below the +1.0 threshold; single model retained | Done |
 | 9 | Variable selection | Feature engineering | 19 derived attributes (affordability, request vs existing debt, utilization, account mix, recency, recodes); 94 candidates after duplicate removal | Done |
-| 10 | | Pre-filters | Availability, single-value, leakage and compliance filters on raw and derived attributes | WIP |
+| 10 | | Pre-filters | Availability, single-value, compliance, superseded-recode and leakage filters on raw and derived attributes: 94 → 72 candidates | Done |
 | 11 | | Fine binning and WoE / IV screen | Optimal binning with special values in separate bins; IV ≥ 0.05 | WIP |
 | 12 | | Model estimation | Stepwise logistic regression on WoE; sign and pattern checks | WIP |
 | 13 | | Coarse binning | Final bin structure for selected attributes | WIP |
