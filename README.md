@@ -23,7 +23,7 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 | 9 | Variable selection | Feature engineering | 19 derived attributes (affordability, request vs existing debt, utilization, account mix, recency, recodes); 94 candidates after duplicate removal | Done |
 | 10 | | Pre-filters | Availability, single-value, compliance, superseded-recode and leakage filters on raw and derived attributes: 94 → 72 candidates | Done |
 | 11 | | Fine binning and WoE / IV screen | Optimal binning (`optbinning`), missing values in a separate bin; 72 → 14 candidates pass IV ≥ 0.05, all monotonic and stable on holdout and out-of-time | Done |
-| 12 | | Model estimation | Forward stepwise logistic regression on WoE (LR test, holdout Gini gain and coefficient-sign entry rules): 14 attributes selected; Gini 34.1 holdout / 35.9 out-of-time vs `sub_grade` 32.1 / 36.3 | Done |
+| 12 | | Model estimation | Forward stepwise logistic regression on WoE (holdout Gini gain and coefficient-sign entry rules): 14 attributes selected; Gini 34.1 holdout / 35.9 out-of-time vs `sub_grade` 32.1 / 36.3 | Done |
 | 13 | | Coarse binning | Final bin structure for selected attributes | WIP |
 | 14 | | Collinearity | VIF < 10 | WIP |
 | 15 | Performance assessment | Scaling and calibration | Points-to-double-odds scaling; predicted vs actual by decile | WIP |
