@@ -22,7 +22,7 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 | 8 | | Empirical segmentation | Tree-proposed splits tested as segment-level vs single models; best lift ≈ +0.2 Gini, below the +1.0 threshold; single model retained | Done |
 | 9 | Variable selection | Feature engineering | 19 derived attributes (affordability, request vs existing debt, utilization, account mix, recency, recodes); 94 candidates after duplicate removal | Done |
 | 10 | | Pre-filters | Availability, single-value, compliance, superseded-recode and leakage filters on raw and derived attributes: 94 → 72 candidates | Done |
-| 11 | | Fine binning and WoE / IV screen | Optimal binning with special values in separate bins; IV ≥ 0.05 | WIP |
+| 11 | | Fine binning and WoE / IV screen | Optimal binning (`optbinning`), missing values in a separate bin; 72 → 14 candidates pass IV ≥ 0.05, all monotonic and stable on holdout and out-of-time | Done |
 | 12 | | Model estimation | Stepwise logistic regression on WoE; sign and pattern checks | WIP |
 | 13 | | Coarse binning | Final bin structure for selected attributes | WIP |
 | 14 | | Collinearity | VIF < 10 | WIP |
@@ -39,11 +39,33 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 
 ## Data
 
-Files used (excluded from the repository due to size):
+Download the dataset from the Kaggle link above and place these two files in the same folder as the notebook. They are excluded from the repository due to size.
 
-- `accepted_2007_to_2018Q4.csv`
-- `rejected_2007_to_2018Q4.csv`
+- `accepted_2007_to_2018Q4.csv` (1.6 GB)
+- `rejected_2007_to_2018Q4.csv` (1.7 GB)
 
-## Requirements
+## Environment Setup
 
-Python 3 with `pandas`, `numpy`, `scikit-learn` and `statsmodels`; `optbinning` for the binning stage.
+Tested on Windows 11 with Python 3.12. Pinned versions are in `requirements.txt`.
+
+**1. Create an isolated environment** (Anaconda / Miniconda):
+
+```
+conda create -n scorecard python=3.12 pip -y
+conda activate scorecard
+pip install -r requirements.txt
+```
+
+**2. Register it as a Jupyter kernel:**
+
+```
+python -m ipykernel install --user --name scorecard --display-name "Python 3.12 (scorecard)"
+```
+
+**3. Run the notebook:** open `scorecard_dev.ipynb` in JupyterLab from the folder that holds the CSV files, select the **Python 3.12 (scorecard)** kernel, and run all cells. A full run takes about four minutes and needs roughly 12 GB of free memory, since the accepted-loans file is about 6.3 GB once loaded.
+
+**Notes**
+
+- Use a dedicated environment. In a full Anaconda base environment on Windows, `optbinning`'s dependency `ortools` and Anaconda's `pyarrow` ship conflicting DLLs, and one of them fails to import.
+- The setup cell disables pandas' `numexpr` acceleration (`pd.set_option('compute.use_numexpr', False)`). Multi-threaded `numexpr` returned intermittent incorrect results during development. The pinned environment does not install `numexpr`.
+- The notebook reads the CSV files by relative path, so the kernel's working directory must be the notebook folder (the default when the notebook is opened in JupyterLab).
