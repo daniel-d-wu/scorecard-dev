@@ -19,19 +19,19 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 | 5 | | Sample design | Development Jan-2013 – Jun-2015 (70/30 train/holdout, stratified by half-year × bad); out-of-time Jul–Dec 2015; 543,131 loans | Done |
 | 6 | | Business segmentation | Single segment; FICO tier, loan purpose and file depth carried to empirical testing | Done |
 | 7 | | Reject inference | Known good/bad model, fuzzy augmentation, reject risk adjustment and booked/inferred mix sensitivity; diagnostic only, final model on accepted loans | Done |
-| 8 | | Empirical segmentation | Tree-proposed splits tested as segment-level vs single models; best lift ≈ +0.2 Gini, below the +1.0 threshold; single model retained | Done |
+| 8 | | Empirical segmentation | Tree-proposed splits tested as segment-level vs single models; best lift ≈ +0.1 AUC, below the +0.5 threshold; single model retained | Done |
 | 9 | Variable selection | Feature engineering | 19 derived attributes (affordability, request vs existing debt, utilization, account mix, recency, recodes); 94 candidates after duplicate removal | Done |
 | 10 | | Pre-filters | Availability, single-value, compliance, superseded-recode and leakage filters on raw and derived attributes: 94 → 72 candidates | Done |
 | 11 | | Fine binning and WoE / IV screen | Optimal binning (`optbinning`), missing values in a separate bin; 72 → 14 candidates pass IV ≥ 0.05, all monotonic and stable on holdout and out-of-time | Done |
-| 12 | | Model estimation | Forward stepwise logistic regression on WoE, entry by pseudo-R² gain ≥ 0.001 with coefficient-sign checks: 9 attributes selected; Gini 33.4 holdout / 35.0 out-of-time vs `sub_grade` 32.1 / 36.3 | Done |
+| 12 | | Model estimation | Forward stepwise logistic regression on WoE, entry by pseudo-R² gain ≥ 0.001 with coefficient-sign checks: 9 attributes selected; AUC 66.7 / KS 24.2 holdout, AUC 67.5 / KS 25.3 out-of-time vs `sub_grade` 66.0 / 23.5 and 68.1 / 26.6 | Done |
 | 13 | | Coarse binning | Deferred: selected attributes keep their fine bins for now; plan to merge to about 5–8 bins per attribute and refit | Deferred |
 | 14 | | Collinearity | All 9 VIFs below 1.7 and stable on holdout and out-of-time; all coefficients negative; two moderately correlated pairs retained after a drop-one test | Done |
 | 15 | Performance assessment | Scaling and calibration | 600 points at 50:1 good:bad odds, 20 points to double the odds; calibrated on holdout (actual/predicted 1.00); out-of-time under-predicted by 8%, a level shift to revisit in monitoring | Done |
-| 16 | | Discrimination | KS, Gini / AUC and rank-ordering vs `sub_grade` | WIP |
-| 17 | | Attribute summary | Final attributes, bins and points | WIP |
-| 18 | | Holdout and out-of-time validation | Performance stability and attribute PSI | WIP |
-| 19 | | Fair lending | Disparate impact framework (no protected-class data available; described only) | WIP |
-| 20 | | Adverse action reason codes | Top reasons by points lost vs best bin | WIP |
+| 16 | | Discrimination | AUC 66.6 / KS 23.9 holdout, AUC 67.5 / KS 25.2 out-of-time vs `sub_grade` 66.0 / 23.5 and 68.1 / 26.6; ahead on holdout, behind on out-of-time (AUC differences significant by bootstrap); no decile reversals; ROC and KS charts | Done |
+| 17 | | Attribute summary | 9 final attributes (6 raw, 3 derived) with description, IV, direction, coefficient, VIF and points range | Done |
+| 18 | | Holdout and out-of-time validation | Holdout matches train; out-of-time score PSI 0.003, attribute PSI < 0.03, ranking holds, calibration level shift (actual/predicted 1.08) | Done |
+| 19 | | Fair lending | Disparate impact framework (no protected-class data available; described only) | Deferred |
+| 20 | | Adverse action reason codes | Top four reasons by points lost vs each attribute's best bin, with a worked example | Done |
 | 21 | | Cutoff strategy | Approval rate vs bad rate trade-off; swap-set analysis vs `sub_grade` | WIP |
 | 22 | Implementation | Implementation and governance | Score code validation and approval process (described only) | WIP |
 | 23 | Ongoing monitoring | Stability and performance monitoring | PSI, CSI and performance tracking on 2016–2017 vintages as post-launch data | WIP |
