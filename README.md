@@ -32,10 +32,10 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 | 18 | | Holdout and out-of-time validation | Holdout matches train; out-of-time score PSI 0.003, attribute PSI < 0.03, ranking holds, calibration level shift (actual/predicted 1.08) | Done |
 | 19 | | Fair lending | Disparate impact framework (no protected-class data available; described only) | Deferred |
 | 20 | | Adverse action reason codes | Top four reasons by points lost vs each attribute's best bin, with a worked example | Done |
-| 21 | | Cutoff strategy | Approval rate vs bad rate trade-off; swap-set analysis vs `sub_grade` | WIP |
-| 22 | Implementation | Implementation and governance | Score code validation and approval process (described only) | WIP |
+| 21 | | Cutoff strategy | Approval rate vs bad rate trade-off; swap-set analysis vs `sub_grade` | Deferred |
+| 22 | Implementation | Implementation and governance | Score code validation and approval process (described only) | Deferred |
 | 23 | Ongoing monitoring | Stability and performance monitoring | 2016–2018 loans as post-launch data: score PSI green every quarter but rising to 0.096; CSI yellow in 2018 for `bc_open_to_buy` and `fico_range_low` (shift toward safer applicants); 2016 under-predicted by 16%+ on a conservative basis, so recalibration is indicated; AUC / KS stable | Done |
-| 24 | | Recalibration triggers | Threshold-based redevelopment / recalibration criteria | WIP |
+| 24 | | Recalibration triggers | Threshold-based redevelopment / recalibration criteria | Deferred |
 
 ## Data
 
