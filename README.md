@@ -24,9 +24,9 @@ Development of an application probability-of-default (PD) scorecard for unsecure
 | 10 | | Pre-filters | Availability, single-value, compliance, superseded-recode and leakage filters on raw and derived attributes: 94 → 72 candidates | Done |
 | 11 | | Fine binning and WoE / IV screen | Optimal binning (`optbinning`), missing values in a separate bin; 72 → 14 candidates pass IV ≥ 0.05, all monotonic and stable on holdout and out-of-time | Done |
 | 12 | | Model estimation | Forward stepwise logistic regression on WoE, entry by pseudo-R² gain ≥ 0.001 with coefficient-sign checks: 9 attributes selected; Gini 33.4 holdout / 35.0 out-of-time vs `sub_grade` 32.1 / 36.3 | Done |
-| 13 | | Coarse binning | Final bin structure for selected attributes | WIP |
-| 14 | | Collinearity | VIF < 10 | WIP |
-| 15 | Performance assessment | Scaling and calibration | Points-to-double-odds scaling; predicted vs actual by decile | WIP |
+| 13 | | Coarse binning | Deferred: selected attributes keep their fine bins for now; plan to merge to about 5–8 bins per attribute and refit | Deferred |
+| 14 | | Collinearity | All 9 VIFs below 1.7 and stable on holdout and out-of-time; all coefficients negative; two moderately correlated pairs retained after a drop-one test | Done |
+| 15 | Performance assessment | Scaling and calibration | 600 points at 50:1 good:bad odds, 20 points to double the odds; calibrated on holdout (actual/predicted 1.00); out-of-time under-predicted by 8%, a level shift to revisit in monitoring | Done |
 | 16 | | Discrimination | KS, Gini / AUC and rank-ordering vs `sub_grade` | WIP |
 | 17 | | Attribute summary | Final attributes, bins and points | WIP |
 | 18 | | Holdout and out-of-time validation | Performance stability and attribute PSI | WIP |
