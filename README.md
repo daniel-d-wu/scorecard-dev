@@ -6,7 +6,7 @@ This repository is for demonstrative purposes only. It uses public LendingClub l
 
 ## Overview
 
-Development of an application probability-of-default (PD) scorecard for unsecured personal loans, structured to follow model risk management standards: conceptual soundness, modeling framework, variable selection, performance assessment, implementation and ongoing monitoring. All work is in `scorecard_dev.ipynb`.
+This is a development of a probability-of-default (PD) scorecard for unsecured personal loans, structured to follow model risk management standards: business purpose, modeling framework, variable selection, performance assessment, implementation and ongoing monitoring. All work is in `scorecard_dev.ipynb`.
 
 ## Roadmap
 
